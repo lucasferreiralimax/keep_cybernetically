@@ -2,7 +2,23 @@
   let navLinks = [
     {
       'title': 'Home',
-      'link': 'home'
+      'link': '#home',
+      'target': '_self'
+    },
+    {
+      'title': 'About',
+      'link': '#about',
+      'target': '_self'
+    },
+    {
+      'title': 'Contact',
+      'link': '#contact',
+      'target': '_self'
+    },
+    {
+      'title': 'Github',
+      'link': 'https://github.com/lucasferreiralimax',
+      'target': '_blank'
     }
   ];
 
@@ -24,14 +40,8 @@
 <template lang='pug'>
 button.nav-button(on:click='{handleMenu}') Menu
 nav.nav(class:active='{active}')
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
-  a(href="/#") {navLinks[0].title}
+  +each('navLinks as item')
+    a(href='{item.link}' target='{item.target}') {item.title}
 </template>
 
 <style lang="stylus">
@@ -42,7 +52,6 @@ nav.nav(class:active='{active}')
   top 0
   left 0
 .nav
-  padding 10px
   background #333
   position absolute
   top 60px
@@ -52,11 +61,15 @@ nav.nav(class:active='{active}')
   flex-direction column
   color #fff
   transition .3s all
-  width 50px
+  width 70px
   &.active
     width 200px
-    background #f00
   a
     color #fff
+    text-decoration none
+    display flex
+    padding 10px
+    &:hover
+      background #666
 </style>
 
