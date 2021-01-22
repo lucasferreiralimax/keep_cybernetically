@@ -1,9 +1,11 @@
 <script>
+  import HeaderComponent from './components/HeaderComponent.svelte';
   export let name;
 </script>
 
 <template lang='pug'>
-main
+HeaderComponent({name})
+main#main
   h1 Hello {name}!
   p Visit the&nbsp;
     a(href="https://svelte.dev/tutorial") Svelte tutorial
@@ -11,17 +13,17 @@ main
 </template>
 
 <style lang="stylus">
-main
+#main
   text-align center
-  padding 1em
-  max-width 240px
-  margin 0 auto
+  padding 20px
+  width calc(100% - 70px)
+  transform translateX(70px)
+  transition .3s
+  word-break break-word
+  box-sizing border-box
 h1
   color #ff3e00
   text-transform uppercase
   font-size 4em
   font-weight 100
-@media (min-width: 640px)
-  main
-    max-width none
 </style>
