@@ -1,15 +1,22 @@
 <script>
+  import { Router, Link, Route } from "svelte-navigator";
   import HeaderComponent from './components/HeaderComponent.svelte';
+  import Home from "./pages/Home.svelte";
+	import About from "./pages/About.svelte";
+	import Contact from "./pages/Contact.svelte";
   export let name;
 </script>
 
 <template lang='pug'>
-HeaderComponent({name})
-main#main
-  h1 Hello {name}!
-  p Visit the&nbsp;
-    a(href="https://svelte.dev/tutorial") Svelte tutorial
-    |  to learn how to build Svelte apps.
+Router
+  HeaderComponent({name})
+  main#main
+    Route(path="/")
+      Home({name})
+    Route(path="about")
+      About
+    Route(path="contact")
+      Contact({name})
 </template>
 
 <style lang="stylus">
@@ -21,9 +28,4 @@ main#main
   transition .3s
   word-break break-word
   box-sizing border-box
-h1
-  color #ff3e00
-  text-transform uppercase
-  font-size 4em
-  font-weight 100
 </style>
