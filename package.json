@@ -1,6 +1,6 @@
 {
   "name": "keep_cybernetically",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
   "scripts": {
     "build": "rollup -c",
