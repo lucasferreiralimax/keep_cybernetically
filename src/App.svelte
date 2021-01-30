@@ -12,7 +12,7 @@ Router
   HeaderComponent({name})
   main#main
     Route(path="/")
-      Home({name})
+      Home
     Route(path="about")
       About
     Route(path="contact")
