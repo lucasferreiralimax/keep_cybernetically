@@ -1,4 +1,6 @@
 <script>
+  import NoteComponent from './NoteComponent.svelte';
+
   let notes = [{'title': 'teste', 'text': 'testes \n teste testes'}]
   let title = ''
   let text = ''
@@ -12,7 +14,8 @@
     text = ''
   }
 
-  function removeNote (index) {
+  function removeNote (event) {
+    let index = event.detail.index
     notes = [...notes.slice(0, index), ...notes.slice(index + 1, notes.length)]
   }
 </script>
@@ -24,10 +27,7 @@ section.keep
   button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
-    article.note(id='note-{index}')
-      h2 {note.title}
-      .text {note.text}
-      button.remove(on:click='{removeNote.bind(this, index)}' type="button") x
+    NoteComponent({index} {note} on:remove='{removeNote}')
 </template>
 
 <style lang="stylus">
@@ -68,47 +68,5 @@ section.notes
     z-index 9
     opacity 1
     pointer-events none
-
-.note
-  background #eee
-  width calc(33.3% - 6.6px)
-  height 150px
-  margin-right 10px
-  margin-bottom 10px
-  float left
-  position relative
-  transition .3s all
-  border-radius 6px
-  &:nth-of-type(3n)
-    margin-right 0
-  &:hover
-    transform scale(1.05)
-    .remove
-      opacity 1
-      pointer-events all
-  h2, .text
-    margin 0
-    padding 0
-    white-space nowrap
-    overflow hidden
-    text-overflow ellipsis
-  .remove
-    cursor pointer
-    position absolute
-    top 10px
-    right 10px
-    opacity 0
-    pointer-events none
-    transition .3s all
-    border 0
-    background #aaa
-    color #fff
-    border-radius 100px
-    height 20px
-    width 20px
-    line-height 0
-    &:hover
-      background #f00
-      color #fff
 </style>
 
