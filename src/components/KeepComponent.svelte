@@ -1,7 +1,9 @@
 <script>
   import NoteComponent from './NoteComponent.svelte';
 
-  let notes = [{'title': 'teste', 'text': 'testes \n teste testes'}]
+  let notes_local = localStorage.getItem('notes')
+
+  let notes =  notes_local ? JSON.parse(notes_local) : [{'title': 'teste', 'text': 'testes \n teste testes'}]
   let title = ''
   let text = ''
 
@@ -10,6 +12,7 @@
       'title': title,
       'text': `${text}`
     })
+    localStorage.setItem('notes', JSON.stringify(notes))
     title = ''
     text = ''
   }
@@ -17,6 +20,7 @@
   function removeNote (event) {
     let index = event.detail.index
     notes = [...notes.slice(0, index), ...notes.slice(index + 1, notes.length)]
+    localStorage.setItem('notes', JSON.stringify(notes))
   }
 </script>
 
