@@ -62,12 +62,13 @@ nav.nav(class:active='{active}')
 <style lang="stylus">
 .nav-button
   width 70px
+  height 60px
   padding 10px
   cursor pointer
   position absolute
   top 0
   left 0
-  background rgba(0,0,0,0)
+  background rgba(0,0,0,.1)
   border 0
   outline none
   svg

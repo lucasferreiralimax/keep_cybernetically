@@ -1,11 +1,13 @@
 <script>
+  import { link } from "svelte-navigator";
   import NavComponent from './NavComponent.svelte';
   export let name;
 </script>
 
 <template lang='pug'>
 header
-  h1 {name}
+  a.logo(href='/' use:link)
+    h1 {name}
   NavComponent
 </template>
 
@@ -15,8 +17,14 @@ header
   color #fff
   padding-left 80px
   height 60px
+  display flex
+  align-items center
+.logo
+  user-select none
+  color #fff
   h1
     margin 0
     padding 0
+    line-height 0
 </style>
 
