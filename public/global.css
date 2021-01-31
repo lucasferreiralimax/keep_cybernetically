@@ -4,6 +4,11 @@ html, body {
 	height: 100%;
 }
 
+::selection {
+  background: #000;
+  color: #fff;
+}
+
 body {
 	color: #333;
 	margin: 0;
@@ -12,6 +17,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
+
+a { text-decoration: none; }
 
 main h1 {
   color: #ff3e00;
