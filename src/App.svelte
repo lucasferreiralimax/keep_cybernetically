@@ -28,4 +28,10 @@ Router
   transition .3s
   word-break break-word
   box-sizing border-box
+  position relative
+  z-index 1
+  &:after
+    content ''
+    display table
+    clear both
 </style>

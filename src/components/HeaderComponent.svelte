@@ -19,6 +19,12 @@ header
   height 60px
   display flex
   align-items center
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  z-index 2
 .logo
   user-select none
   color #fff

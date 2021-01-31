@@ -84,6 +84,7 @@ nav.nav(class:active='{active}')
   color #fff
   transition .3s all
   width 70px
+  min-height 100vh
   &.active
     width 200px
     .nav-link
