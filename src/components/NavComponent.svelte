@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { link } from "svelte-navigator";
   let navLinks = [
     {
@@ -45,25 +46,32 @@
     }
   }
 
-  let mediaQuery = window.matchMedia('(min-width: 560px)')
+  onMount(() => {
+    let nav = document.querySelector('nav')
+    let mediaQuery = window.matchMedia('(min-width: 560px)')
 
-  mediaQuery.addListener(doMenuMobile)
+    mediaQuery.addListener(doMenuMobile)
 
-  function doMenuMobile(mediaQuery) {
-    if(mediaQuery.matches) {
-      if(active) {
-        document.querySelector('#main').style.width = 'calc(100% - 220px)'
-        document.querySelector('#main').style.transform = 'translateX(220px)'
-        document.querySelector('body').removeAttribute('style')
-      }
-    } else {
-      if(active) {
-        handleMenu()
+    function handleMenuMobile() { handleMenu() }
+
+    function doMenuMobile(mediaQuery) {
+      if(mediaQuery.matches) {
+        nav.removeEventListener('click', handleMenuMobile)
+        if(active) {
+          document.querySelector('#main').style.width = 'calc(100% - 220px)'
+          document.querySelector('#main').style.transform = 'translateX(220px)'
+          document.querySelector('body').removeAttribute('style')
+        }
+      } else {
+        nav.addEventListener('click', handleMenuMobile)
+        if(active) {
+          handleMenu()
+        }
       }
     }
-  }
 
-  doMenuMobile(mediaQuery);
+    doMenuMobile(mediaQuery);
+  });
 </script>
 
 <template lang='pug'>
