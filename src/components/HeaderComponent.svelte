@@ -29,6 +29,7 @@ header
   user-select none
   color #fff
   h1
+    font-size 1rem
     margin 0
     padding 0
     line-height 0

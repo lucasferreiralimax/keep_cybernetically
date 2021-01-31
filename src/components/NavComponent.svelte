@@ -29,16 +29,41 @@
   function handleMenu() {
     active = !active
     if(active) {
-      document.querySelector('#main').style.width = 'calc(100% - 220px)'
-      document.querySelector('#main').style.transform = 'translateX(220px)'
+      if(window.innerWidth > 560) {
+        document.querySelector('#main').style.width = 'calc(100% - 220px)'
+        document.querySelector('#main').style.transform = 'translateX(220px)'
+      } else {
+        document.querySelector('body').style.overflowY = 'hidden'
+      }
       document.querySelector('.nav-button svg').setAttribute('viewBox', `0 0 511.76 511.76`)
       document.querySelector('.nav-button svg path').setAttribute('d', `M436.896,74.869c-99.84-99.819-262.208-99.819-362.048,0c-99.797,99.819-99.797,262.229,0,362.048 c49.92,49.899,115.477,74.837,181.035,74.837s131.093-24.939,181.013-74.837C536.715,337.099,536.715,174.688,436.896,74.869z M361.461,331.317c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 l-75.413-75.435l-75.392,75.413c-4.181,4.16-9.643,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 c-8.341-8.341-8.341-21.845,0-30.165l75.392-75.413l-75.413-75.413c-8.341-8.341-8.341-21.845,0-30.165 c8.32-8.341,21.824-8.341,30.165,0l75.413,75.413l75.413-75.413c8.341-8.341,21.824-8.341,30.165,0 c8.341,8.32,8.341,21.824,0,30.165l-75.413,75.413L361.461,331.317z`)
     } else {
       document.querySelector('#main').removeAttribute('style')
+      document.querySelector('body').removeAttribute('style')
       document.querySelector('.nav-button svg').setAttribute('viewBox', `0 0 56 56`)
       document.querySelector('.nav-button svg path').setAttribute('d', `M28 0C12.561 0 0 12.561 0 28s12.561 28 28 28 28-12.561 28-28S43.439 0 28 0zm12 41H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4z`)
     }
-	}
+  }
+
+  let mediaQuery = window.matchMedia('(min-width: 560px)')
+
+  mediaQuery.addListener(doMenuMobile)
+
+  function doMenuMobile(mediaQuery) {
+    if(mediaQuery.matches) {
+      if(active) {
+        document.querySelector('#main').style.width = 'calc(100% - 220px)'
+        document.querySelector('#main').style.transform = 'translateX(220px)'
+        document.querySelector('body').removeAttribute('style')
+      }
+    } else {
+      if(active) {
+        handleMenu()
+      }
+    }
+  }
+
+  doMenuMobile(mediaQuery);
 </script>
 
 <template lang='pug'>
@@ -57,6 +82,7 @@ nav.nav(class:active='{active}')
         +if('item.icon')
           +html('item.icon')
         .text {item.title}
+.nav-overlay(class:active='{active}' on:click='{handleMenu}')
 </template>
 
 <style lang="stylus">
@@ -71,13 +97,14 @@ nav.nav(class:active='{active}')
   background rgba(0,0,0,.1)
   border 0
   outline none
+  z-index 2
   svg
     fill #fff
 .nav
   background #222
   position absolute
   top 60px
-  left 0
+  left -70px
   bottom 0
   display flex
   flex-direction column
@@ -85,7 +112,13 @@ nav.nav(class:active='{active}')
   transition .3s all
   width 70px
   min-height 100vh
+  z-index 2
+  @media (max-width: 560px)
+    box-shadow 5px 10px 10px rgba(0, 0, 0, .3)
+  @media (min-width: 560px)
+    left 0
   &.active
+    left 0
     width 200px
     .nav-link
       justify-content start
@@ -113,5 +146,23 @@ nav.nav(class:active='{active}')
     opacity 0
     pointer-events none
     transition .3s all
+
+.nav-overlay
+  background rgba(#000, .3)
+  position absolute
+  z-index 1
+  top 60px
+  bottom 0
+  left 0
+  right 0
+  min-height calc(100vh - 60px)
+  opacity 0
+  pointer-events none
+  transition .5s all
+  @media (min-width: 560px)
+    display none
+  &.active
+    opacity 1
+    pointer-events all
 </style>
 
