@@ -13,25 +13,25 @@ header
 
 <style lang="stylus">
 header
-  background #333
-  color #fff
-  padding-left 80px
-  height 60px
-  display flex
   align-items center
-  position fixed
-  top 0
-  left 0
-  right 0
+  background #333
   bottom 0
+  color #fff
+  display flex
+  height 60px
+  left 0
+  padding-left 80px
+  position fixed
+  right 0
+  top 0
   z-index 2
 .logo
-  user-select none
   color #fff
+  user-select none
   h1
     font-size 1rem
+    line-height 0
     margin 0
     padding 0
-    line-height 0
 </style>
 

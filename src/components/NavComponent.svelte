@@ -95,31 +95,32 @@ nav.nav(class:active='{active}')
 
 <style lang="stylus">
 .nav-button
-  width 70px
-  height 60px
-  padding 10px
-  cursor pointer
-  position absolute
-  top 0
-  left 0
+  -webkit-tap-highlight-color transparent
   background rgba(0,0,0,.1)
   border 0
+  cursor pointer
+  height 60px
+  left 0
   outline none
+  padding 10px
+  position absolute
+  top 0
+  width 70px
   z-index 2
   svg
     fill #fff
 .nav
   background #222
-  position absolute
-  top 60px
-  left -70px
   bottom 0
+  color #fff
   display flex
   flex-direction column
-  color #fff
+  left -80px
+  min-height 100vh
+  position absolute
+  top 60px
   transition .3s all
   width 70px
-  min-height 100vh
   z-index 2
   @media (max-width: 560px)
     box-shadow 5px 10px 10px rgba(0, 0, 0, .3)
@@ -138,35 +139,37 @@ nav.nav(class:active='{active}')
       transition 1s all
 
 .nav-link
-  color #fff
-  text-decoration none
-  display flex
-  padding 10px 20px 10px
+  -webkit-tap-highlight-color transparent
   align-items center
   border-bottom 1px solid #333
+  color #fff
+  display flex
+  padding 10px 20px 10px
+  text-decoration none
   transition .4s all
   &:hover
     background #666
-    transform scale(1.2)
     border-radius 0 10px 10px 0
+    transform scale(1.2)
   .text
-    width 0
     opacity 0
     pointer-events none
     transition .3s all
+    width 0
 
 .nav-overlay
+  -webkit-tap-highlight-color transparent
   background rgba(#000, .3)
-  position absolute
-  z-index 1
-  top 60px
   bottom 0
   left 0
-  right 0
   min-height calc(100vh - 60px)
   opacity 0
   pointer-events none
+  position absolute
+  right 0
+  top 60px
   transition .5s all
+  z-index 1
   @media (min-width: 560px)
     display none
   &.active

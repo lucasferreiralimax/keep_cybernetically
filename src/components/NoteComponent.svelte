@@ -20,17 +20,18 @@
 
 <style lang="stylus">
 .note
+  -webkit-tap-highlight-color transparent
   background #eee
+  border-radius 6px
+  height 150px
   margin-bottom 10px
   position relative
   transition .3s all
-  border-radius 6px
-  height 150px
   z-index 1
   @media (min-width: 560px)
-    width calc(50% - 5px)
-    margin-right 10px
     float left
+    margin-right 10px
+    width calc(50% - 5px)
     &:nth-of-type(2n)
       margin-right 0
   @media (min-width: 760px)
@@ -46,34 +47,35 @@
     &:nth-of-type(5n)
       margin-right 0
   &:hover
-    transform scale(1.05)
     background #fff
     box-shadow 0 4px 10px rgba(#000, .3)
+    transform scale(1.05)
     z-index 2
     .remove
       opacity 1
       pointer-events all
   h2, .text
     margin 0
-    padding 0
-    white-space nowrap
     overflow hidden
+    padding 0
     text-overflow ellipsis
+    white-space nowrap
   .remove
+    -webkit-tap-highlight-color transparent
+    background #aaa
+    border 0
+    border-radius 100px
+    color #fff
     cursor pointer
-    position absolute
-    top 10px
-    right 10px
+    height 20px
+    line-height 0
     opacity 0
     pointer-events none
+    position absolute
+    right 10px
+    top 10px
     transition .3s all
-    border 0
-    background #aaa
-    color #fff
-    border-radius 100px
-    height 20px
     width 20px
-    line-height 0
     &:hover
       background #f00
       color #fff

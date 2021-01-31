@@ -21,19 +21,19 @@ Router
 
 <style lang="stylus">
 #main
-  text-align center
-  padding 20px
-  width 100%
-  transition .3s
-  word-break break-word
   box-sizing border-box
+  padding 20px
   position relative
+  text-align center
+  transition .3s
+  width 100%
+  word-break break-word
   z-index 1
   @media (min-width: 560px)
-    width calc(100% - 70px)
     transform translateX(70px)
+    width calc(100% - 70px)
   &:after
+    clear both
     content ''
     display table
-    clear both
 </style>

@@ -37,10 +37,10 @@ section.notes
 <style lang="stylus">
 .keep
   background #333
-  color #fff
   border-radius 10px
-  max-width 450px
+  color #fff
   margin 0 auto 2em
+  max-width 450px
   padding 1em
   text-align left
   button
@@ -49,28 +49,28 @@ section.notes
 #title-content
   background rgba(0,0,0,0)
   border 0
-  width 100%
   box-sizing border-box
+  color #fff
   font-size 1.5em
   outline none
-  color #fff
+  width 100%
   &::placeholder
     color #fff
 
 #text-content
   margin 15px 0
-  position relative
   outline none
+  position relative
   &.active:after
     opacity 0
   &:after
     content 'Criar uma nota...'
     display flex
-    width 100%
-    position absolute
-    top 0
-    z-index 9
     opacity 1
     pointer-events none
+    position absolute
+    top 0
+    width 100%
+    z-index 9
 </style>
 
