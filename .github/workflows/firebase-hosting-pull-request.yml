@@ -12,7 +12,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CREATECURRICULUM }}'
-          projectId: createcurriculum
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEEP_CYBERNETICALLY }}'
+          projectId: keep-cybernetically
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
