@@ -1,23 +1,13 @@
-# svelte app keep_cybernetically
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+# keep_cybernetically svelte app
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
 
 ## Get started
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
+cd keep_cybernetically
 npm install
 ```
 
@@ -31,8 +21,6 @@ Navigate to [localhost:5000](http://localhost:5000). You should see your app run
 
 By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
 
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
 ## Building and running in production mode
 
 To create an optimised version of the app:
@@ -41,4 +29,16 @@ To create an optimised version of the app:
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+> If you have problems [open a new issue here](https://github.com/lucasferreiralimax/keep_cybernetically/issues/new)
+
+### :performing_arts: Com quem você pode conversar sobre o projeto?
+#### Who can you talk to about the project?
+#### ¿Con quién puedes hablar sobre el proyecto?
+#### С кем вы можете поговорить о проекте?
+#### 誰がプロジェクトについて話すことができますか？
+#### À qui pouvez-vous parler du projet?
+#### Projeyle ilgili kim konuşabilirsin?
+#### 你能谈谈这个项目吗？
+
+* :ghost: @lucasferreiralimax
+* :email: lucasferreiralimax@gmail.com
