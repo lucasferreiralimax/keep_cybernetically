@@ -1,5 +1,6 @@
 <script>
   import NoteComponent from './NoteComponent.svelte';
+  import { text_area_resize } from './autoresize_textarea.js'
 
   let notes_local = localStorage.getItem('notes')
 
@@ -27,7 +28,7 @@
 <template lang='pug'>
 section.keep
   input#title-content(type='text' bind:value='{title}' placeholder='Titulo')
-  article#text-content(contenteditable='true' bind:innerHTML='{text}' class:active='{text}') {text}
+  textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Titulo' use:text_area_resize)
   button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
@@ -58,9 +59,18 @@ section.notes
     color #fff
 
 #text-content
-  margin 15px 0
+  background rgba(0,0,0,0)
+  border 0
+  color #fff
+  margin 15px 0 0
+  max-width 100%
+  min-width 100%
   outline none
+  overflow hidden
   position relative
+  resize none
+  &::placeholder
+    color #fff
   &.active:after
     opacity 0
   &:after

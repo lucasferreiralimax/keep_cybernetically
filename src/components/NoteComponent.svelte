@@ -60,6 +60,13 @@
     padding 0
     text-overflow ellipsis
     white-space nowrap
+  h2
+    white-space nowrap
+  .text
+    height calc(100% - 40px)
+    padding 0 10px
+    text-align left
+    white-space pre
   .remove
     -webkit-tap-highlight-color transparent
     background #aaa
