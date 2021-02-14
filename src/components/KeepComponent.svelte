@@ -75,6 +75,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   h2 {note_full.title}
   .text {note_full.text}
   button.remove(on:click='{handleFullNote}' type="button") x
+.overlay-full(class:active='{note_full.active}')
 </template>
 
 <style lang="stylus">
@@ -126,32 +127,35 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     z-index 9
 .note-full
   background #fff
-  box-shadow 0 10px 20px rgba(0,0,0,.25)
   border-radius 6px
-  width calc(100% - 20px)
-  max-width 400px
-  padding-bottom 10px
-  position fixed
-  top 80px
+  box-shadow 0 10px 20px rgba(0,0,0,.25)
   left 50%
-  right 0
-  z-index 99
-  transform translate(-50%, 0)
+  max-width 400px
   opacity 0
+  padding-bottom 10px
   pointer-events none
+  position fixed
+  right 0
+  top 80px
+  transform translate(-50%, 0)
+  transform-origin top left
+  transition .3s all
+  width calc(100% - 20px)
+  z-index 99
   &.active
     opacity 1
     pointer-events all
     &:hover
+      transform scale(1.05) translate(-50%, 0)
       .remove
         opacity 1
         pointer-events all
   .text
+    max-height calc(100vh - 220px)
+    overflow-y auto
     padding 0 10px
     text-align left
     white-space pre
-    overflow-y auto
-    max-height calc(100vh - 220px)
   .remove
     -webkit-tap-highlight-color transparent
     background #aaa
@@ -171,5 +175,19 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     &:hover
       background #f00
       color #fff
+.overlay-full
+  background #000
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  z-index 2
+  opacity 0
+  pointer-events none
+  transition .5s all
+  &.active
+    opacity .7
+    pointer-events all
 </style>
 
