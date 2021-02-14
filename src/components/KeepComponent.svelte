@@ -156,7 +156,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     overflow-y auto
     padding 0 10px
     text-align left
-    white-space pre
+    white-space pre-line
   .remove
     -webkit-tap-highlight-color transparent
     background #aaa
