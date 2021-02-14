@@ -20,6 +20,7 @@
       'text': `${text}`
     })
     localStorage.setItem('notes', JSON.stringify(notes))
+    document.querySelector('#text-content').removeAttribute('style')
     title = ''
     text = ''
   }
