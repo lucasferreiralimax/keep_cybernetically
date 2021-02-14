@@ -39,6 +39,7 @@
       title: notes[index].title,
       text: notes[index].text,
     }
+    document.querySelector('.note-full .text').scrollTop = 0
   }
 
   function clickOutside(node) {
@@ -153,6 +154,11 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     padding 0 10px
     text-align left
     white-space pre-line
+    &::-webkit-scrollbar-track
+	    background #fff
+    &::-webkit-scrollbar-thumb
+      background-color rgba(0,0,0,.2)
+      border 3px solid #fff
 .overlay-full
   background #000
   position fixed
