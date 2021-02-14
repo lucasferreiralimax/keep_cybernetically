@@ -27,6 +27,7 @@ Router
   text-align center
   transition .3s
   width 100%
+  min-height 100vh
   word-break break-word
   z-index 1
   @media (min-width: 560px)

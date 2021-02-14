@@ -31,8 +31,8 @@
     active = !active
     if(active) {
       if(window.innerWidth > 560) {
-        document.querySelector('#main').style.width = 'calc(100% - 220px)'
-        document.querySelector('#main').style.transform = 'translateX(220px)'
+        document.querySelector('#main').style.width = 'calc(100% - 200px)'
+        document.querySelector('#main').style.transform = 'translateX(200px)'
       } else {
         document.querySelector('body').style.overflowY = 'hidden'
       }
