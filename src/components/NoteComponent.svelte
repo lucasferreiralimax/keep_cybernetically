@@ -9,10 +9,14 @@
   function remove(index) {
     dispatch('remove', { index: index });
   }
+
+  function full(index) {
+    dispatch('full', { index: index });
+  }
 </script>
 
 <template lang='pug'>
-  article.note(id='note-{index}')
+  article.note(id='note-{index}' on:click='{full.bind(this, index)}')
     h2 {note.title}
     .text {note.text}
     button.remove(on:click='{remove.bind(this, index)}' type="button") x

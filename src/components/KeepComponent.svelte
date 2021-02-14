@@ -8,6 +8,12 @@
   let title = ''
   let text = ''
 
+  let note_full = {
+    active: false,
+    title: '',
+    text: '',
+  }
+
   function createNote() {
     notes = notes.concat({
       'title': title,
@@ -23,6 +29,38 @@
     notes = [...notes.slice(0, index), ...notes.slice(index + 1, notes.length)]
     localStorage.setItem('notes', JSON.stringify(notes))
   }
+
+  function fullNote (event) {
+    let index = event.detail.index
+    note_full = {
+      index: index,
+      active: true,
+      title: notes[index].title,
+      text: notes[index].text,
+    }
+  }
+
+  function clickOutside(node) {
+    const handleClick = event => {
+      if (note_full.active && node && !node.contains(event.target) && !event.defaultPrevented) {
+        node.dispatchEvent(
+          new CustomEvent('click_outside', node)
+        )
+      }
+    }
+
+    document.addEventListener('click', handleClick, true);
+
+    return {
+      destroy() {
+        document.removeEventListener('click', handleClick, true);
+      }
+    }
+  }
+
+  function handleFullNote () {
+    note_full.active = false
+  }
 </script>
 
 <template lang='pug'>
@@ -32,7 +70,11 @@ section.keep
   button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
-    NoteComponent({index} {note} on:remove='{removeNote}')
+    NoteComponent({index} {note} on:remove='{removeNote}' on:full='{fullNote}')
+section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleFullNote}')
+  h2 {note_full.title}
+  .text {note_full.text}
+  button.remove(on:click='{handleFullNote}' type="button") x
 </template>
 
 <style lang="stylus">
@@ -82,5 +124,52 @@ section.notes
     top 0
     width 100%
     z-index 9
+.note-full
+  background #fff
+  box-shadow 0 10px 20px rgba(0,0,0,.25)
+  border-radius 6px
+  width calc(100% - 20px)
+  max-width 400px
+  padding-bottom 10px
+  position fixed
+  top 80px
+  left 50%
+  right 0
+  z-index 99
+  transform translate(-50%, 0)
+  opacity 0
+  pointer-events none
+  &.active
+    opacity 1
+    pointer-events all
+    &:hover
+      .remove
+        opacity 1
+        pointer-events all
+  .text
+    padding 0 10px
+    text-align left
+    white-space pre
+    overflow-y auto
+    max-height calc(100vh - 220px)
+  .remove
+    -webkit-tap-highlight-color transparent
+    background #aaa
+    border 0
+    border-radius 100px
+    color #fff
+    cursor pointer
+    height 20px
+    line-height 0
+    opacity 0
+    pointer-events none
+    position absolute
+    right 10px
+    top 10px
+    transition .3s all
+    width 20px
+    &:hover
+      background #f00
+      color #fff
 </style>
 
