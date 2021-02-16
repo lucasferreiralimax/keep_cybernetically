@@ -32,8 +32,8 @@
   margin-bottom 10px
   position relative
   transition .3s all
-  z-index 1
   user-select none
+  z-index 1
   @media (min-width: 560px)
     float left
     margin-right 10px

@@ -161,15 +161,15 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
       border 3px solid #fff
 .overlay-full
   background #000
-  position fixed
-  top 0
-  left 0
-  right 0
   bottom 0
-  z-index 2
+  left 0
   opacity 0
   pointer-events none
+  position fixed
+  right 0
+  top 0
   transition .5s all
+  z-index 2
   &.active
     opacity .7
     pointer-events all

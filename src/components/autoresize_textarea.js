@@ -10,8 +10,5 @@ function resize({ target }) {
 export function text_area_resize(el) {
 	resize({ target: el });
 	el.addEventListener('input', resize);
-
-	return {
-		destroy: () => el.removeEventListener('input', resize)
-	}
+	return { destroy: () => el.removeEventListener('input', resize)	}
 }

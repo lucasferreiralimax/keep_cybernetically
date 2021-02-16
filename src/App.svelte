@@ -22,12 +22,12 @@ Router
 <style lang="stylus">
 #main
   box-sizing border-box
+  min-height 100vh
   padding 20px
   position relative
   text-align center
   transition .3s
   width 100%
-  min-height 100vh
   word-break break-word
   z-index 1
   @media (min-width: 560px)
