@@ -209,8 +209,9 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
       .minimize
         opacity 1
         pointer-events all
-  button
-    margin-top 10px
+  .btn.danger
+    margin 10px 10px 0 0
+    float right
   .minimize
     -webkit-tap-highlight-color transparent
     background #ccc
@@ -224,7 +225,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     pointer-events none
     position absolute
     right 10px
-    top 0
+    top 10px
     transition .3s all
     width 20px
     &:hover
