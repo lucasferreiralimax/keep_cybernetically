@@ -79,6 +79,7 @@ section.notes
 section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleFullNote}')
   h2 {note_full.title}
   .text {note_full.text}
+  button.minimize(on:click='{handleFullNote}' type="button") _
   button.btn.danger(type='button' on:click='{removeNote(note_full.index) || handleFullNote}') Excluir
 .overlay-full(class:active='{note_full.active}')
 </template>
@@ -167,6 +168,11 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     pointer-events all
     &:hover
       transform scale(1.05) translate(-50%, 0)
+      .minimize
+        opacity 1
+        pointer-events all
+  h2
+    margin 5px 0
   .text
     max-height calc(100vh - 300px)
     overflow-y auto
@@ -180,6 +186,25 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
       border 3px solid #fff
   button
     margin-top 10px
+  .minimize
+    -webkit-tap-highlight-color transparent
+    background #ccc
+    border 0
+    border-radius 3px
+    color #fff
+    cursor pointer
+    height 20px
+    line-height 0
+    opacity 0
+    pointer-events none
+    position absolute
+    right 10px
+    top 0
+    transition .3s all
+    width 20px
+    &:hover
+      background #aaa
+      color #fff
 .overlay-full
   background #000
   bottom 0
