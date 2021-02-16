@@ -68,7 +68,7 @@
 <template lang='pug'>
 section.keep
   input#title-content(type='text' bind:value='{title}' placeholder='Titulo')
-  textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Titulo' use:text_area_resize)
+  textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Criar uma nota...' use:text_area_resize)
   button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
@@ -115,17 +115,6 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   resize none
   &::placeholder
     color #fff
-  &.active:after
-    opacity 0
-  &:after
-    content 'Criar uma nota...'
-    display flex
-    opacity 1
-    pointer-events none
-    position absolute
-    top 0
-    width 100%
-    z-index 9
 .note-full
   background #fff
   border-radius 6px
