@@ -25,10 +25,13 @@
     text = ''
   }
 
-  function removeNote (event) {
-    let index = event.detail.index
+  function removeNote (index) {
     notes = [...notes.slice(0, index), ...notes.slice(index + 1, notes.length)]
     localStorage.setItem('notes', JSON.stringify(notes))
+  }
+
+  function removeNoteChildComponent (event) {
+    removeNote(event.detail.index)
   }
 
   function fullNote (event) {
@@ -72,10 +75,11 @@ section.keep
   button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
-    NoteComponent({index} {note} on:remove='{removeNote}' on:full='{fullNote}')
+    NoteComponent({index} {note} on:remove='{removeNoteChildComponent}' on:full='{fullNote}')
 section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleFullNote}')
   h2 {note_full.title}
   .text {note_full.text}
+  button(type='button' on:click='{removeNote(note_full.index) || handleFullNote}') Excluir nota
 .overlay-full(class:active='{note_full.active}')
 </template>
 
@@ -138,7 +142,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     &:hover
       transform scale(1.05) translate(-50%, 0)
   .text
-    max-height calc(100vh - 220px)
+    max-height calc(100vh - 300px)
     overflow-y auto
     padding 0 10px
     text-align left
@@ -148,6 +152,8 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     &::-webkit-scrollbar-thumb
       background-color rgba(0,0,0,.2)
       border 3px solid #fff
+  button
+    margin-top 10px
 .overlay-full
   background #000
   bottom 0
