@@ -72,14 +72,14 @@
 section.keep
   input#title-content(type='text' bind:value='{title}' placeholder='Titulo')
   textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Criar uma nota...' use:text_area_resize)
-  button(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
+  button.btn.primary(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
     NoteComponent({index} {note} on:remove='{removeNoteChildComponent}' on:full='{fullNote}')
 section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleFullNote}')
   h2 {note_full.title}
   .text {note_full.text}
-  button(type='button' on:click='{removeNote(note_full.index) || handleFullNote}') Excluir nota
+  button.btn.danger(type='button' on:click='{removeNote(note_full.index) || handleFullNote}') Excluir
 .overlay-full(class:active='{note_full.active}')
 </template>
 
@@ -94,6 +94,32 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   text-align left
   button
     cursor pointer
+
+.btn
+  background #eee
+  color #000
+  border 1px solid rgba(0,0,0,.3)
+  border-radius 3px
+  padding 10px
+  cursor pointer
+  box-shadow inset 0 0 0 1px rgba(255,255,255,.5), 0 2px rgba(0,0,0,.3)
+  text-shadow 0 1px #fff
+  transition .3s all
+  user-select none
+  &[disabled]
+    opacity .7
+    pointer-events none
+  &:hover
+    background #fff
+    color #000
+    &.primary
+    &.danger
+      color #fff
+      text-shadow none
+    &.primary
+      background #ff3e00
+    &.danger
+      background #f74d4d
 
 #title-content
   background rgba(0,0,0,0)
