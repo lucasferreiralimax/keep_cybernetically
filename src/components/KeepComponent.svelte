@@ -36,13 +36,21 @@
 
   function fullNote (event) {
     let index = event.detail.index
+    let title_content = document.querySelector('#title-content-edit')
+    let text_content = document.querySelector('#text-content-edit')
+
     note_full = {
       index: index,
       active: true,
+      edit: false,
       title: notes[index].title,
       text: notes[index].text,
     }
-    document.querySelector('.note-full .text').scrollTop = 0
+
+    title_content.value = notes[index].title
+    text_content.value = notes[index].text
+    text_content.scrollTop = 0
+    text_area_resize(text_content)
   }
 
   function clickOutside(node) {
@@ -63,8 +71,15 @@
     }
   }
 
-  function handleFullNote () {
+  function handleHiddenFullNote () {
     note_full.active = false
+  }
+
+  function changeFullNote () {
+    notes[note_full.index].title = note_full.title
+    notes[note_full.index].text = note_full.text
+    notes = notes
+    localStorage.setItem('notes', JSON.stringify(notes))
   }
 </script>
 
@@ -76,11 +91,11 @@ section.keep
 section.notes
   +each('notes as note, index')
     NoteComponent({index} {note} on:remove='{removeNoteChildComponent}' on:full='{fullNote}')
-section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleFullNote}')
-  h2 {note_full.title}
-  .text {note_full.text}
-  button.minimize(on:click='{handleFullNote}' type="button") _
-  button.btn.danger(type='button' on:click='{removeNote(note_full.index) || handleFullNote}') Excluir
+section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleHiddenFullNote}')
+  input#title-content-edit(type='text' bind:value='{note_full.title}' on:input='{changeFullNote}' placeholder='Titulo')
+  textarea#text-content-edit(bind:value='{note_full.text}' on:input='{changeFullNote}' placeholder='Criar uma nota...' use:text_area_resize)
+  button.minimize(on:click='{handleHiddenFullNote}' type="button") _
+  button.btn.danger(type='button' on:click='{removeNote(note_full.index) || handleHiddenFullNote}') Excluir
 .overlay-full(class:active='{note_full.active}')
 </template>
 
@@ -98,12 +113,12 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
 
 .btn
   background #eee
-  color #000
   border 1px solid rgba(0,0,0,.3)
   border-radius 3px
-  padding 10px
-  cursor pointer
   box-shadow inset 0 0 0 1px rgba(255,255,255,.5), 0 2px rgba(0,0,0,.3)
+  color #000
+  cursor pointer
+  padding 10px
   text-shadow 0 1px #fff
   transition .3s all
   user-select none
@@ -122,7 +137,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
     &.danger
       background #f74d4d
 
-#title-content
+#title-content, #title-content-edit
   background rgba(0,0,0,0)
   border 0
   box-sizing border-box
@@ -133,7 +148,7 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   &::placeholder
     color #fff
 
-#text-content
+#text-content, #text-content-edit
   background rgba(0,0,0,0)
   border 0
   color #fff
@@ -146,6 +161,29 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   resize none
   &::placeholder
     color #fff
+
+#title-content-edit
+  padding-left 10px
+  margin 5px 0
+
+#title-content-edit,
+#text-content-edit
+  color #000
+  &::placeholder
+    color #000
+
+#text-content-edit
+  min-width calc(100% - 20px)
+  max-height calc(100vh - 300px)
+  overflow-y auto
+  padding 0 10px
+  text-align left
+  &::-webkit-scrollbar-track
+    background #fff
+  &::-webkit-scrollbar-thumb
+    background-color rgba(0,0,0,.2)
+    border 3px solid #fff
+
 .note-full
   background #fff
   border-radius 6px
@@ -171,19 +209,6 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
       .minimize
         opacity 1
         pointer-events all
-  h2
-    margin 5px 0
-  .text
-    max-height calc(100vh - 300px)
-    overflow-y auto
-    padding 0 10px
-    text-align left
-    white-space pre-line
-    &::-webkit-scrollbar-track
-	    background #fff
-    &::-webkit-scrollbar-thumb
-      background-color rgba(0,0,0,.2)
-      border 3px solid #fff
   button
     margin-top 10px
   .minimize
