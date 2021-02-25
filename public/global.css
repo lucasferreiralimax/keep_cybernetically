@@ -22,6 +22,7 @@ html, body {
 }
 
 body {
+  background: #000 url('assets/shattered.png');
 	box-sizing: border-box;
 	color: #333;
 	margin: 0;
