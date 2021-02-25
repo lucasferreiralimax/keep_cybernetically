@@ -2,10 +2,11 @@
   import NoteComponent from './NoteComponent.svelte';
   import NoteFullComponent from './NoteFullComponent.svelte';
   import { text_area_resize } from './autoresize_textarea.js'
+  import { poems } from './poems.js'
 
   let notes_local = localStorage.getItem('notes')
 
-  let notes =  notes_local ? JSON.parse(notes_local) : [{'title': 'teste', 'text': 'testes \n teste testes'}]
+  let notes =  notes_local ? JSON.parse(notes_local) : poems
   let title = ''
   let text = ''
 
