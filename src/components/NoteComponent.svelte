@@ -72,7 +72,7 @@
     height calc(100% - 40px)
     padding 0 10px
     text-align left
-    white-space pre
+    white-space break-spaces
   .remove
     -webkit-tap-highlight-color transparent
     background #aaa
