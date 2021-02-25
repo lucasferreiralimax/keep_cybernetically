@@ -107,14 +107,15 @@ section.note-full(class:active='{note_full.active}' use:clickOutside on:click_ou
   position fixed
   right 0
   top 80px
-  transform translate(-50%, 0)
-  transform-origin top left
+  transform scale(0) translate(-50%, 0)
+  transform-origin center left
   transition .3s all
   width calc(100% - 20px)
   z-index 99
   &.active
     opacity 1
     pointer-events all
+    transform scale(1) translate(-50%, 0)
     &:hover
       transform scale(1.05) translate(-50%, 0)
       .minimize
