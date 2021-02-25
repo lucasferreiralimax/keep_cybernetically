@@ -27,6 +27,7 @@
   -webkit-tap-highlight-color transparent
   background #eee
   border-radius 6px
+  color #000
   cursor pointer
   height 150px
   margin-bottom 10px
