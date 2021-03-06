@@ -30,10 +30,13 @@
   -webkit-tap-highlight-color transparent
   background #eee
   border-radius 6px
+  box-shadow 0 5px 15px rgba(#000,.5)
+  box-sizing border-box
   color #000
   cursor pointer
   height 150px
   margin-bottom 10px
+  padding 1rem
   position relative
   transition .3s all
   user-select none
@@ -56,6 +59,8 @@
       margin-right 10px
     &:nth-of-type(5n)
       margin-right 0
+  @media (min-width: 1700px)
+    height 300px
   &:hover
     background #fff
     box-shadow 0 4px 10px rgba(#000, .3)
@@ -73,10 +78,12 @@
   h2
     white-space nowrap
   .text
-    height calc(100% - 40px)
+    height 70%
     padding 0 10px
     text-align left
     white-space break-spaces
+    @media (min-width: 1700px)
+      height 85%
   .remove
     -webkit-tap-highlight-color transparent
     background #aaa
@@ -95,8 +102,12 @@
     top 10px
     transition .3s all
     width 35px
+    transform scale(.7)
     &:hover
       background #f00
       color #fff
+      transform scale(1)
+    &:active
+      transform scale(.8)
 </style>
 
