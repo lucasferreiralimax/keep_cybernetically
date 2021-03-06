@@ -78,12 +78,18 @@ NoteFullComponent({note_full} on:remove='{removeNoteChildComponent}' on:changeNo
 .keep
   background #333
   border-radius 10px
+  box-shadow 0 0 0 1px rgba(#fff, .1), 0 5px 20px rgba(#000,.4)
   color #fff
   margin 0 auto 2em
   max-width 450px
   padding 1em
   text-align left
+  &:after
+    content ''
+    display table
+    clear both
   button
+    float right
     cursor pointer
 
 :global(.btn)
