@@ -82,6 +82,33 @@ Se estivesse se importando no começo, nada disso teria acontecido
 
 Doutor Manhattan - Posso mudar quase tudo, mas não posso mudar a natureza humana.`},
 {
+  title: 'O Tempo não para',
+  text: `Disparo contra o sol
+Sou forte, sou por acaso
+Minha metralhadora cheia de mágoas
+Eu sou um cara
+Cansado de correr
+Na direção contrária
+Sem pódio de chegada ou beijo de namorada
+Eu sou mais um cara
+Mas se você achar
+Que eu to derrotado
+Saiba que ainda estão rolando os dados
+Porque o tempo, o tempo não para...
+
+Cazuza`},
+{
+  title: 'O Tempo não para',
+  text: `Tô aproveitando cada segundo
+Antes que isso aqui vire uma tragédia
+
+E não adianta nem me procurar
+Em outros timbres, outros risos
+Eu estava aqui o tempo todo
+Só você não viu...
+
+Pitty`},
+{
   title: 'Filtro Solar 🌞',
   text: `Senhoras e senhores da turma de 2003
 Filtro solar
