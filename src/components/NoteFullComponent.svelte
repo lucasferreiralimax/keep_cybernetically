@@ -1,18 +1,19 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
   import { text_area_resize } from './autoresize_textarea.js'
+  import { notes_store } from '../store.js';
 
-  const dispatch = createEventDispatcher();
+  let notes;
+
+  const unsubscribeNotes = notes_store.subscribe(value => {
+		notes = value;
+	});
 
   export let note_full;
 
-  function remove(index) {
-    dispatch('remove', { index: index });
+  function remove() {
+    notes_store.set([...notes.slice(0, note_full.index), ...notes.slice(note_full.index + 1, notes.length)])
+    localStorage.setItem('notes', JSON.stringify(notes))
     note_full.active = false
-  }
-
-  function changeNote(note_full) {
-    dispatch('changeNote', { note_full: note_full });
   }
 
   function clickOutside(node) {
@@ -36,14 +37,40 @@
   function handleHiddenFullNote () {
     note_full.active = false
   }
+
+  function changeFullNote () {
+    const { title, text } = note_full;
+    notes.splice(note_full.index, 1, { title, text })
+    notes_store.set(notes)
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }
 </script>
 
 <template lang='pug'>
-section.note-full(class:active='{note_full.active}' use:clickOutside on:click_outside='{handleHiddenFullNote}')
-  input#title-content-edit(type='text' bind:value='{note_full.title}' on:input='{changeNote.bind(this, note_full)}' placeholder='Titulo')
-  textarea#text-content-edit(bind:value='{note_full.text}' on:input='{changeNote.bind(this, note_full)}' placeholder='Criar uma nota...' use:text_area_resize)
-  button.minimize(on:click='{handleHiddenFullNote}' type="button") _
-  button.btn.danger(type='button' on:click='{remove.bind(this, note_full.index) || handleHiddenFullNote}') Excluir
+section.note-full(
+  class:active='{note_full.active}'
+  use:clickOutside on:click_outside='{handleHiddenFullNote}'
+)
+  input#title-content-edit(
+    type='text'
+    bind:value='{note_full.title}'
+    on:input='{changeFullNote}'
+    placeholder='Titulo'
+  )
+  textarea#text-content-edit(
+    bind:value='{note_full.text}'
+    on:input='{changeFullNote}'
+    placeholder='Criar uma nota...'
+    use:text_area_resize
+  )
+  button.minimize(
+    on:click='{handleHiddenFullNote}'
+    type="button"
+  ) _
+  button.btn.danger(
+    type='button'
+    on:click='{remove}'
+  ) Excluir
 .overlay-full(class:active='{note_full.active}')
 </template>
 
