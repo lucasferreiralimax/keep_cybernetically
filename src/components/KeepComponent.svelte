@@ -1,26 +1,28 @@
 <script>
   import NoteComponent from './NoteComponent.svelte';
-  import NoteFullComponent from './NoteFullComponent.svelte';
+
+  import { note_full_store, notes_store } from '../store.js';
   import { text_area_resize } from './autoresize_textarea.js'
-  import { poems } from './poems.js'
 
-  let notes_local = localStorage.getItem('notes')
-
-  let notes =  notes_local ? JSON.parse(notes_local) : poems
+  let note_full;
+  let notes;
   let title = ''
   let text = ''
 
-  let note_full = {
-    active: false,
-    title: '',
-    text: '',
-  }
+  const unsubscribeNoteFull = note_full_store.subscribe(value => {
+		note_full = value;
+	});
+
+  const unsubscribeNotes = notes_store.subscribe(value => {
+		notes = value;
+	});
 
   function createNote() {
-    notes = notes.concat({
+    notes_store.set(notes.concat({
       'title': title,
       'text': `${text}`
-    })
+    }))
+
     localStorage.setItem('notes', JSON.stringify(notes))
     document.querySelector('#text-content').removeAttribute('style')
     title = ''
@@ -28,8 +30,10 @@
   }
 
   function removeNote (index) {
-    notes = [...notes.slice(0, index), ...notes.slice(index + 1, notes.length)]
-    localStorage.setItem('notes', JSON.stringify(notes))
+    if (confirm('Deseja mesmo excluir?')) {
+      notes_store.set([...notes.slice(0, index), ...notes.slice(index + 1, notes.length)])
+      localStorage.setItem('notes', JSON.stringify(notes))
+    }
   }
 
   function removeNoteChildComponent (event) {
@@ -41,25 +45,18 @@
     let title_content = document.querySelector('#title-content-edit')
     let text_content = document.querySelector('#text-content-edit')
 
-    note_full = {
+    note_full_store.set({
       index: index,
       active: true,
       edit: false,
       title: notes[index].title,
       text: notes[index].text,
-    }
+    })
 
     title_content.value = notes[index].title
     text_content.value = notes[index].text
     text_content.scrollTop = 0
     text_area_resize(text_content)
-  }
-
-  function changeFullNote (event) {
-    notes[event.detail.note_full.index].title = event.detail.note_full.title
-    notes[event.detail.note_full.index].text = event.detail.note_full.text
-    notes = notes
-    localStorage.setItem('notes', JSON.stringify(notes))
   }
 </script>
 
@@ -71,7 +68,6 @@ section.keep
 section.notes
   +each('notes as note, index')
     NoteComponent({index} {note} on:remove='{removeNoteChildComponent}' on:full='{fullNote}')
-NoteFullComponent({note_full} on:remove='{removeNoteChildComponent}' on:changeNote='{changeFullNote}')
 </template>
 
 <style lang="stylus">
