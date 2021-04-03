@@ -133,8 +133,8 @@ section.note-full(
   pointer-events none
   position fixed
   right 0
-  top 80px
-  transform scale(0) translate(-50%, 0)
+  top 50%
+  transform scale(0) translate(-50%, -50%)
   transform-origin center left
   transition .3s all
   width calc(100% - 20px)
@@ -142,9 +142,9 @@ section.note-full(
   &.active
     opacity 1
     pointer-events all
-    transform scale(1) translate(-50%, 0)
+    transform scale(1) translate(-50%, -50%)
     &:hover
-      transform scale(1.05) translate(-50%, 0)
+      transform scale(1.05) translate(-50%, -50%)
       .minimize
         opacity 1
         pointer-events all
