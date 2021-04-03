@@ -1,10 +1,18 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
+  import { note_full_store } from './store.js';
   import HeaderComponent from './components/HeaderComponent.svelte';
   import Home from "./pages/Home.svelte";
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
+  import NoteFullComponent from './components/NoteFullComponent.svelte';
   export let name;
+
+  let note_full;
+
+  const unsubscribeNoteFull = note_full_store.subscribe(value => {
+		note_full = value;
+	});
 </script>
 
 <template lang='pug'>
@@ -17,6 +25,7 @@ Router
       About
     Route(path="contact")
       Contact({name})
+  NoteFullComponent({note_full})
 </template>
 
 <style lang="stylus">
