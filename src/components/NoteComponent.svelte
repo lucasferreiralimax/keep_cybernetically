@@ -19,7 +19,7 @@
   article.note(id='note-{index}' on:click='{full.bind(this, index)}')
     h2 {note.title}
     .text {note.text}
-    button.remove(on:click='{remove.bind(this, index)}' type="button")
+    button.remove(on:click|stopPropagation='{remove.bind(this, index)}' type="button")
       | Remove Note
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510" width="20px" height="20px" fill="#fff")
         path(d="M118.832 467.243A44.892 44.892 0 00163.776 510h182.447a44.89 44.89 0 0044.944-42.757L417.447 165H92.552zM300 240h30v165h-30zm-60 0h30v165h-30zm-60 0h30v165h-30zM330 75V45c0-24.812-20.186-45-45-45h-60c-24.812 0-45 20.188-45 45v30H60v60h390V75zm-120 0V45c0-8.271 6.73-15 15-15h60c8.272 0 15 6.729 15 15v30z")
