@@ -11,9 +11,11 @@
   export let note_full;
 
   function remove() {
-    notes_store.set([...notes.slice(0, note_full.index), ...notes.slice(note_full.index + 1, notes.length)])
-    localStorage.setItem('notes', JSON.stringify(notes))
-    note_full.active = false
+    if (confirm('Deseja mesmo excluir?')) {
+      notes_store.set([...notes.slice(0, note_full.index), ...notes.slice(note_full.index + 1, notes.length)])
+      localStorage.setItem('notes', JSON.stringify(notes))
+      note_full.active = false
+    }
   }
 
   function clickOutside(node) {
@@ -145,9 +147,6 @@ section.note-full(
     transform scale(1) translate(-50%, -50%)
     &:hover
       transform scale(1.05) translate(-50%, -50%)
-      .minimize
-        opacity 1
-        pointer-events all
   .btn.danger
     margin 10px 10px 0 0
     float right
@@ -160,8 +159,6 @@ section.note-full(
     cursor pointer
     height 20px
     line-height 0
-    opacity 0
-    pointer-events none
     position absolute
     right 10px
     top 10px
