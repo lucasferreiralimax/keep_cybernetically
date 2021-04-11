@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { link } from "svelte-navigator";
+  import { menu_store } from '../store.js';
   let navLinks = [
     {
       'title': 'Home',
@@ -25,48 +26,29 @@
     }
   ];
 
-  let active = false;
+  let menu;
+
+  const unsubscribeMenu= menu_store.subscribe(value => {
+		menu = value;
+	});
 
   function handleMenu() {
-    active = !active
-    if(active) {
-      if(window.innerWidth > 560) {
-        document.querySelector('#main').style.width = 'calc(100% - 200px)'
-        document.querySelector('#main').style.transform = 'translateX(200px)'
-      } else {
-        document.querySelector('body').style.overflowY = 'hidden'
-      }
-      document.querySelector('.nav-button svg').setAttribute('viewBox', `0 0 511.76 511.76`)
-      document.querySelector('.nav-button svg path').setAttribute('d', `M436.896,74.869c-99.84-99.819-262.208-99.819-362.048,0c-99.797,99.819-99.797,262.229,0,362.048 c49.92,49.899,115.477,74.837,181.035,74.837s131.093-24.939,181.013-74.837C536.715,337.099,536.715,174.688,436.896,74.869z M361.461,331.317c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 l-75.413-75.435l-75.392,75.413c-4.181,4.16-9.643,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 c-8.341-8.341-8.341-21.845,0-30.165l75.392-75.413l-75.413-75.413c-8.341-8.341-8.341-21.845,0-30.165 c8.32-8.341,21.824-8.341,30.165,0l75.413,75.413l75.413-75.413c8.341-8.341,21.824-8.341,30.165,0 c8.341,8.32,8.341,21.824,0,30.165l-75.413,75.413L361.461,331.317z`)
-    } else {
-      document.querySelector('#main').removeAttribute('style')
-      document.querySelector('body').removeAttribute('style')
-      document.querySelector('.nav-button svg').setAttribute('viewBox', `0 0 56 56`)
-      document.querySelector('.nav-button svg path').setAttribute('d', `M28 0C12.561 0 0 12.561 0 28s12.561 28 28 28 28-12.561 28-28S43.439 0 28 0zm12 41H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4z`)
-    }
+    menu_store.set(!menu)
   }
 
   onMount(() => {
     let nav = document.querySelector('nav')
     let mediaQuery = window.matchMedia('(min-width: 560px)')
+    const handleMenuMobile = () => { handleMenu() }
 
     mediaQuery.addListener(doMenuMobile)
-
-    function handleMenuMobile() { handleMenu() }
 
     function doMenuMobile(mediaQuery) {
       if(mediaQuery.matches) {
         nav.removeEventListener('click', handleMenuMobile)
-        if(active) {
-          document.querySelector('#main').style.width = 'calc(100% - 220px)'
-          document.querySelector('#main').style.transform = 'translateX(220px)'
-          document.querySelector('body').removeAttribute('style')
-        }
       } else {
         nav.addEventListener('click', handleMenuMobile)
-        if(active) {
-          handleMenu()
-        }
+        if(menu) handleMenu()
       }
     }
 
@@ -75,10 +57,14 @@
 </script>
 
 <template lang='pug'>
-button.nav-button(class:active='{active}' on:click='{handleMenu}')
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="35px" height="35px")
-    path(d="M28 0C12.561 0 0 12.561 0 28s12.561 28 28 28 28-12.561 28-28S43.439 0 28 0zm12 41H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4z")
-nav.nav(class:active='{active}')
+button.nav-button(class:active='{menu}' on:click='{handleMenu}')
+  +if('menu')
+    svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.76 511.76" width="35px" height="35px")
+      path(d="M436.896,74.869c-99.84-99.819-262.208-99.819-362.048,0c-99.797,99.819-99.797,262.229,0,362.048 c49.92,49.899,115.477,74.837,181.035,74.837s131.093-24.939,181.013-74.837C536.715,337.099,536.715,174.688,436.896,74.869z M361.461,331.317c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 l-75.413-75.435l-75.392,75.413c-4.181,4.16-9.643,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 c-8.341-8.341-8.341-21.845,0-30.165l75.392-75.413l-75.413-75.413c-8.341-8.341-8.341-21.845,0-30.165 c8.32-8.341,21.824-8.341,30.165,0l75.413,75.413l75.413-75.413c8.341-8.341,21.824-8.341,30.165,0 c8.341,8.32,8.341,21.824,0,30.165l-75.413,75.413L361.461,331.317z")
+  +if('!menu')
+    svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="35px" height="35px")
+      path(d="M28 0C12.561 0 0 12.561 0 28s12.561 28 28 28 28-12.561 28-28S43.439 0 28 0zm12 41H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4zm0-11H16a2 2 0 010-4h24a2 2 0 010 4z")
+nav.nav(class:active='{menu}')
   +each('navLinks as item')
     +if('item.target')
       a.nav-link(href='{item.link}' target='{item.target}' noroute)
@@ -90,7 +76,7 @@ nav.nav(class:active='{active}')
         +if('item.icon')
           +html('item.icon')
         .text {item.title}
-.nav-overlay(class:active='{active}' on:click='{handleMenu}')
+.nav-overlay(class:active='{menu}' on:click='{handleMenu}')
 </template>
 
 <style lang="stylus">
