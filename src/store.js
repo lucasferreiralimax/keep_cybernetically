@@ -5,3 +5,4 @@ let notes_local = localStorage.getItem('notes')
 
 export let notes_store = writable(notes_local ? JSON.parse(notes_local) : poems);
 export let note_full_store = writable({});
+export let menu_store = writable(false);
