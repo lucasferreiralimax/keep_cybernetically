@@ -6,9 +6,15 @@
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
   import NoteFullComponent from './components/NoteFullComponent.svelte';
+  import { menu_store } from './store.js';
   export let name;
 
+  let menu;
   let note_full;
+
+  const unsubscribeMenu= menu_store.subscribe(value => {
+		menu = value;
+	});
 
   const unsubscribeNoteFull = note_full_store.subscribe(value => {
 		note_full = value;
@@ -18,7 +24,7 @@
 <template lang='pug'>
 Router
   HeaderComponent({name})
-  main#main
+  main#main(class:menu='{menu}')
     Route(path="/")
       Home
     Route(path="about")
@@ -44,6 +50,9 @@ Router
   @media (min-width: 560px)
     transform translateX(70px)
     width calc(100% - 70px)
+    &.menu
+      width calc(100% - 220px)
+      transform translateX(220px)
   &:after
     clear both
     content ''
