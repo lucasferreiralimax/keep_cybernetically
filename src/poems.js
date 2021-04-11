@@ -98,7 +98,7 @@ Porque o tempo, o tempo não para...
 
 Cazuza`},
 {
-  title: 'O Tempo não para',
+  title: 'Na sua estante',
   text: `Tô aproveitando cada segundo
 Antes que isso aqui vire uma tragédia
 
@@ -275,4 +275,99 @@ Whenever I can
 Everybody's free
 
 Pedro Bial`},
+{
+  title: 'O meu guri',
+  text: `Chega estampado, manchete, retrato
+Com venda nos olhos, legenda e as iniciais
+Eu não entendo essa gente, seu moço
+Fazendo alvoroço demais
+O guri no mato, acho que tá rindo
+Acho que tá lindo de papo pro are
+Desde o começo, eu não disse, seu moço
+Ele disse que chegava lá
+Olha aí, olha aí
+Olha aí, ai o meu guri, olha aí
+Olha aí, é o meu guri`},
+{
+  title: 'Antene-se',
+  text: `É só uma cabeça equilibrada em cima do corpo
+Procurando antenar boas vibrações
+Preocupando antenar boa diversão
+
+Chico Science`},
+{
+  title: 'If',
+  text: `If you can keep your head when all about you
+Are losing theirs and blaming it on you;
+If you can trust yourself when all men doubt you,
+But make allowance for their doubting too;
+If you can wait and not be tired by waiting,
+Or, being lied about, don’t deal in lies,
+Or, being hated, don’t give way to hating,
+And yet don’t look too good, nor talk too wise;
+
+If you can dream—and not make dreams your master;
+If you can think—and not make thoughts your aim;
+If you can meet with triumph and disaster
+And treat those two impostors just the same;
+If you can bear to hear the truth you’ve spoken
+Twisted by knaves to make a trap for fools,
+Or watch the things you gave your life to broken,
+And stoop and build ’em up with wornout tools;
+
+If you can make one heap of all your winnings
+And risk it on one turn of pitch-and-toss,
+And lose, and start again at your beginnings
+And never breathe a word about your loss;
+If you can force your heart and nerve and sinew
+To serve your turn long after they are gone,
+And so hold on when there is nothing in you
+Except the Will which says to them: “Hold on”;
+
+If you can talk with crowds and keep your virtue,
+Or walk with kings—nor lose the common touch;
+If neither foes nor loving friends can hurt you;
+If all men count with you, but none too much;
+If you can fill the unforgiving minute
+With sixty seconds’ worth of distance run—
+Yours is the Earth and everything that’s in it,
+And—which is more—you’ll be a Man, my son!
+
+Rudyard Kipling - 1865-1936`},
+{
+  title: 'Ozymandias pt-BR',
+  text: `Encontrei um viajante vindo de uma antiga terra
+Que me disse: — Duas imensas e destroncadas pernas de pedra
+Erguem-se no deserto. Perto delas, sobre a areia
+Meio enterrado, jaz um rosto despedaçado, cuja carranca
+Com lábio enrugado e sorriso de frio comando
+Dizem que seu escultor soube ler bem suas paixões
+Que ainda sobrevivem, estampadas nessas coisas inertes,
+A mão que os escarneceu e o coração que os alimentou
+E no pedestal aparecem estas palavras:
+"Meu nome é Ozymandias, rei dos reis:
+Contemplai as minhas obras, ó poderosos e desesperai-vos!"
+Nada mais resta: em redor a decadência
+Daquele destroço colossal, sem limite e vazio
+As areias solitárias e planas se espalham para longe.
+
+Percy Bysshe Shelley`},
+{
+  title: 'Ozymandias en-US',
+  text: `I met a traveller from an antique land
+Who said:—Two vast and trunkless legs of stone
+Stand in the desert. Near them on the sand,
+Half sunk, a shatter'd visage lies, whose frown
+And wrinkled lip and sneer of cold command
+Tell that its sculptor well those passions read
+Which yet survive, stamp'd on these lifeless things,
+The hand that mock'd them and the heart that fed.
+And on the pedestal these words appear:
+"My name is Ozymandias, king of kings:
+Look on my works, ye mighty, and despair!"
+Nothing beside remains: round the decay
+Of that colossal wreck, boundless and bare,
+The lone and level sands stretch far away.
+
+Percy Bysshe Shelley`},
 ]
