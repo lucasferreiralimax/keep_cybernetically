@@ -15,6 +15,9 @@
     p Writing poetry and also creating drawarts (urban art).
     ul
       li
+        a(href="https://github.com/lucasferreiralimax" target="_blank")
+          img(src="./assets/github-logo.svg" alt="Github Lucas Lima")
+      li
         a(href="https://codepen.io/lucaslimax" target="_blank")
           img(src="./assets/codepen-logo.svg" alt="Codepen Lucas Lima")
       li
