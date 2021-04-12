@@ -51,8 +51,8 @@ Router
     transform translateX(70px)
     width calc(100% - 70px)
     &.menu
-      width calc(100% - 220px)
-      transform translateX(220px)
+      width calc(100% - 200px)
+      transform translateX(200px)
   &:after
     clear both
     content ''
