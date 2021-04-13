@@ -22,16 +22,17 @@
 </script>
 
 <template lang='pug'>
-Router
-  HeaderComponent({name})
-  main#main(class:menu='{menu}')
-    Route(path="/")
-      Home
-    Route(path="about")
-      About
-    Route(path="contact")
-      Contact({name})
-  NoteFullComponent({note_full})
+.app(data-testid="app-container")
+  Router
+    HeaderComponent({name})
+    main#main(class:menu='{menu}')
+      Route(path="/")
+        Home
+      Route(path="about")
+        About
+      Route(path="contact")
+        Contact({name})
+    NoteFullComponent({note_full})
 </template>
 
 <style lang="stylus">

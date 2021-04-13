@@ -5,7 +5,7 @@
 </script>
 
 <template lang='pug'>
-header
+header(data-testid="app-header")
   a.logo(href='/' use:link)
     h1 {name}
   NavComponent
