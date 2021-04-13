@@ -1,5 +1,18 @@
 <script>
   export let name;
+  const social_list = [
+    { name: 'Github',       img: 'github-logo.svg',       link: 'https://github.com/lucasferreiralimax' },
+    { name: 'Codepen',      img: 'codepen-logo.svg',      link: 'https://codepen.io/lucaslimax' },
+    { name: 'Duolingo',     img: 'duolingo-logo.svg',     link: 'https://www.duolingo.com/profile/ferreiralimax' },
+    { name: 'Freecodecamp', img: 'freecodecamp-logo.png', link: 'https://www.freecodecamp.org/lucasferreiralimax' },
+    { name: 'Linkedin',     img: 'linkedin-logo.svg',     link: 'https://www.linkedin.com/in/lucasferreiralimax' },
+    { name: 'Microsoft',    img: 'microsoft-logo.svg',    link: 'https://docs.microsoft.com/pt-br/users/lucasferreiralimax' },
+    { name: 'Pluralsight',  img: 'pluralsight-logo.png',  link: 'https://app.pluralsight.com/profile/lucasferreiralimax' },
+    { name: 'Steam',        img: 'steam-logo.png',        link: 'https://steamcommunity.com/id/lucaslima1337' },
+    { name: 'Telegram',     img: 'telegram-logo.svg',     link: 'https://t.me/lucasferreiralimax' },
+    { name: 'Whatsapp',     img: 'whatsapp-logo.svg',     link: 'https://api.whatsapp.com/send?phone=+5583996749477&text=Hello+Lucas%2C+how+are+you+doing%3F' },
+    { name: 'Youtube',      img: 'youtube-logo.svg',      link: 'https://www.youtube.com/channel/UCxvF9bQs3PAasQJoNfeX-og' }
+  ]
 </script>
 
 <template lang="pug">
@@ -14,39 +27,10 @@
     p I develop my artistic skills inside and outside technology at real world
     p Writing poetry and also creating drawarts (urban art).
     ul
-      li
-        a(href="https://github.com/lucasferreiralimax" target="_blank")
-          img(src="./assets/github-logo.svg" alt="Github Lucas Lima")
-      li
-        a(href="https://codepen.io/lucaslimax" target="_blank")
-          img(src="./assets/codepen-logo.svg" alt="Codepen Lucas Lima")
-      li
-        a(href="https://www.duolingo.com/profile/ferreiralimax" target="_blank")
-          img(src="./assets/duolingo-logo.svg" alt="Duolingo Lucas Lima")
-      li
-        a(href="https://www.freecodecamp.org/lucasferreiralimax" target="_blank")
-          img(src="./assets/freecodecamp-logo.png" alt="Freecodecamp Lucas Lima")
-      li
-        a(href="https://www.linkedin.com/in/lucasferreiralimax" target="_blank")
-          img(src="./assets/linkedin-logo.svg" alt="Linkedin Lucas Lima")
-      li
-        a(href="https://docs.microsoft.com/pt-br/users/lucasferreiralimax" target="_blank")
-          img(src="./assets/microsoft-logo.svg" alt="Microsoft Lucas Lima")
-      li
-        a(href="https://app.pluralsight.com/profile/lucasferreiralimax" target="_blank")
-          img(src="./assets/pluralsight-logo.png" alt="Pluralsight Lucas Lima")
-      li
-        a(href="https://steamcommunity.com/id/lucaslima1337" target="_blank")
-          img(src="./assets/steam-logo.png" alt="Steam Lucas Lima")
-      li
-        a(href="https://t.me/lucasferreiralimax" target="_blank")
-          img(src="./assets/telegram-logo.svg" alt="Telegram Lucas Lima")
-      li
-        a(href="https://api.whatsapp.com/send?phone=+5583996749477&text=Hello+Lucas%2C+how+are+you+doing%3F" target="_blank")
-          img(src="./assets/whatsapp-logo.svg" alt="Whatsapp Lucas Lima")
-      li
-        a(href="https://www.youtube.com/channel/UCxvF9bQs3PAasQJoNfeX-og" target="_blank")
-          img(src="./assets/youtube-logo.svg" alt="Youtube Lucas Lima")
+      +each('social_list as social')
+        li
+          a(href="{social.link}" target="_blank")
+            img(src="{`./assets/${social.img}`}" alt="{`${social.name} Lucas Lima`}")
 </template>
 
 <style lang="stylus">
