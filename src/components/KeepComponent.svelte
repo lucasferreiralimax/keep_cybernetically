@@ -61,7 +61,7 @@
 </script>
 
 <template lang='pug'>
-section.keep
+section.keep(data-testid="app-keep")
   input#title-content(type='text' bind:value='{title}' placeholder='Titulo')
   textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Criar uma nota...' use:text_area_resize)
   button.btn.primary(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
