@@ -50,6 +50,7 @@
 
 <template lang='pug'>
 section.note-full(
+  data-testid='app-note-full'
   class:active='{note_full.active}'
   use:clickOutside on:click_outside='{handleHiddenFullNote}'
 )
