@@ -29,6 +29,16 @@ body {
   background: #000 url('assets/shattered.png');
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   overflow-x: hidden;
+  animation: backgroundMove 15s infinite alternate;
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100%;
+  }
 }
 
 a {
