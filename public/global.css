@@ -32,6 +32,10 @@ body {
   animation: backgroundMove 15s infinite alternate;
 }
 
+body.dark {
+  filter: invert(1);
+}
+
 @keyframes backgroundMove {
   0% {
     background-position-x: 0;
