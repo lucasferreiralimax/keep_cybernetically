@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { link } from "svelte-navigator";
   import { menu_store } from '../store.js';
+  import { dark_store } from '../store.js';
   let navLinks = [
     {
       'title': 'Home',
@@ -26,14 +27,23 @@
     }
   ];
 
-  let menu;
+  let menu, dark;
 
-  const unsubscribeMenu= menu_store.subscribe(value => {
+  const unsubscribeMenu = menu_store.subscribe(value => {
 		menu = value;
+	});
+
+  const unsubscribeDark = dark_store.subscribe(value => {
+		dark = value;
 	});
 
   function handleMenu() {
     menu_store.set(!menu)
+  }
+
+  function handleDark() {
+    dark_store.set(!dark)
+    document.body.classList.toggle('dark');
   }
 
   onMount(() => {
@@ -77,6 +87,13 @@ nav.nav(data-testid="app-nav" class:active='{menu}')
         +if('item.icon')
           +html('item.icon')
         .text {item.title}
+  button.handle-dark(class:dark='{dark}' class:light='{!dark}' on:click='{handleDark}')
+    svg(class="dark" width="30px" height="30px" viewBox="-5 -5 34 34" fill="#fff")
+      path(d="M9.353 2.939a1 1 0 01.22 1.08 8 8 0 0010.408 10.408 1 1 0 011.301 1.3A10.003 10.003 0 0112 22C6.477 22 2 17.523 2 12c0-4.207 2.598-7.805 6.273-9.282a1 1 0 011.08.22z")
+    svg(class="light" width="30px" height="30px" viewBox="-5 -5 34 34" fill="#fff")
+      path(d="M12 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zM4.929 4.929a1 1 0 011.414 0l.707.707A1 1 0 115.636 7.05l-.707-.707a1 1 0 010-1.414zm14.142 0a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM7 12a5 5 0 1110 0 5 5 0 01-10 0zm-5 0a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm17 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zm-2.05 4.95a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm-11.314 0a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707zM12 19a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z")
+    .text.dark Darkmode
+    .text.light Lightmode
 .nav-overlay(class:active='{menu}' on:click='{handleMenu}')
 </template>
 
@@ -126,7 +143,7 @@ nav.nav(data-testid="app-nav" class:active='{menu}')
       opacity 1
       transition 1s all
 
-.nav-link
+.nav-link, .handle-dark
   -webkit-tap-highlight-color transparent
   align-items center
   border-bottom 1px solid #333
@@ -135,6 +152,7 @@ nav.nav(data-testid="app-nav" class:active='{menu}')
   padding 10px 20px 10px
   text-decoration none
   transition .4s all
+  background transparent
   &:hover
     background #666
     border-radius 0 10px 10px 0
@@ -144,6 +162,16 @@ nav.nav(data-testid="app-nav" class:active='{menu}')
     pointer-events none
     transition .3s all
     width 0
+
+.handle-dark
+  border 0
+  cursor pointer
+  &.dark
+    svg.dark, .text.dark
+      display none
+  &.light
+    svg.light, .text.light
+      display none
 
 .nav-overlay
   -webkit-tap-highlight-color transparent
