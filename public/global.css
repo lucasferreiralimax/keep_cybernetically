@@ -2,6 +2,7 @@ html, body {
 	height: 100%;
 	position: relative;
 	width: 100%;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -28,7 +29,6 @@ body {
 	padding: 0;
   background: #000 url('assets/shattered.png');
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  overflow-x: hidden;
   animation: backgroundMove 15s infinite alternate;
 }
 
