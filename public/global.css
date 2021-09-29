@@ -32,8 +32,16 @@ body {
   animation: backgroundMove 15s infinite alternate;
 }
 
-body.dark {
+body.dark,
+body.dark img,
+body.dark .note-full,
+body.dark .notes .note {
   filter: invert(1);
+}
+
+body.dark img.github,
+body.dark img.codepen {
+  filter: invert(0);
 }
 
 @keyframes backgroundMove {
@@ -46,7 +54,7 @@ body.dark {
 }
 
 a {
-  color: #ff3e00;
+  color: #00c1ff;
   text-decoration: none;
 }
 
@@ -61,7 +69,7 @@ input:-webkit-autofill:focus {
   }
 
 main h1 {
-  color: #ff3e00;
+  color: #00c1ff;
   font-size: 4em;
   font-weight: 100;
   margin-top: 0;
