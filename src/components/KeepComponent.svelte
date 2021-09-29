@@ -110,7 +110,7 @@ section.notes
       color #fff
       text-shadow none
     &.primary
-      background #ff3e00
+      background #00c1ff
     &.danger
       background #f74d4d
 
