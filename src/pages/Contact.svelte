@@ -30,7 +30,7 @@
       +each('social_list as social')
         li
           a(href="{social.link}" target="_blank")
-            img(src="{`./assets/${social.img}`}" alt="{`${social.name} Lucas Lima`}")
+            img(class="{social.name.toLowerCase()}" src="{`./assets/${social.img}`}" alt="{`${social.name} Lucas Lima`}")
 </template>
 
 <style lang="stylus">
@@ -41,7 +41,7 @@
     transition .3s box-shadow
     cursor crosshair
     &:hover
-      box-shadow 0 0 0 6px #333, 0 0 0 8px #fff, 0 0 0 12px #ff3e00
+      box-shadow 0 0 0 6px #333, 0 0 0 8px #fff, 0 0 0 12px #00c1ff
   ul
     margin 0
     padding 0
@@ -59,7 +59,7 @@
     transition .3s all
     &:hover
       transform scale(1.1)
-      box-shadow 0 0 0 6px #333, 0 0 0 8px #fff, 0 0 0 12px #ff3e00
+      box-shadow 0 0 0 6px #333, 0 0 0 8px #fff, 0 0 0 12px #00c1ff
     img
       width 50px
 </style>
