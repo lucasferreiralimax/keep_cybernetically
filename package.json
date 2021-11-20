@@ -11,30 +11,30 @@
     "test:cov": "npm run test -- --coverage --verbose"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "@testing-library/jest-dom": "^5.13.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/svelte": "^3.0.3",
     "babel-jest": "^27.3.1",
     "jest": "^27.3.1",
-    "postcss": "^8.3.0",
-    "postcss-load-config": "^3.0.1",
+    "postcss": "^8.3.11",
+    "postcss-load-config": "^3.1.0",
     "pug": "^3.0.2",
-    "rollup": "^2.50.6",
+    "rollup": "^2.60.0",
     "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
     "stylus": "^0.54.8",
-    "svelte": "^3.38.2",
-    "svelte-jester": "^1.7.0",
+    "svelte": "^3.44.2",
+    "svelte-jester": "^1.8.2",
     "svelte-navigator": "^3.1.5",
-    "svelte-preprocess": "^4.7.3"
+    "svelte-preprocess": "^4.9.8"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.12"
+    "sirv-cli": "^1.0.14"
   },
   "bugs": {
     "url": "https://github.com/lucasferreiralimax/keep_cybernetically/issues"
