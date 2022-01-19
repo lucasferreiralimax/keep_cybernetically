@@ -64,7 +64,7 @@
 section.keep(data-testid="app-keep")
   input#title-content(type='text' bind:value='{title}' placeholder='Titulo')
   textarea#text-content(bind:value='{text}' class:active='{text}' placeholder='Criar uma nota...' use:text_area_resize)
-  button.btn.primary(type='button' on:click='{createNote}' disabled='{!title || !text}') Criar nota
+  button.btn.primary(type='button' on:click='{createNote}' class:hidden='{!title || !text}') Criar nota
 section.notes
   +each('notes as note, index')
     NoteComponent({index} {note} on:remove='{removeNoteChildComponent}' on:full='{fullNote}')
@@ -99,6 +99,8 @@ section.notes
   text-shadow 0 1px #fff
   transition .3s all
   user-select none
+  &.hidden
+    display none
   &[disabled]
     opacity .7
     pointer-events none
