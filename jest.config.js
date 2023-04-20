@@ -3,6 +3,7 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.svelte$': ["svelte-jester", { "preprocess": true }],
   },
+  testEnvironment: "jsdom",
   testPathIgnorePatterns: ["node_modules/?!(svelte-navigator)"],
   moduleFileExtensions: ['js', 'svelte'],
   setupFilesAfterEnv: ['<rootDir>/scripts/setupTest.js'],
